@@ -1,0 +1,282 @@
+Description of framnghm.dat
+
+From pp38-38 of 
+
+Statistical Methods in Epidemiology
+by H.A. Kahn and C.T. Sempos
+Oxford University Press Monographs in Epidemiology and 
+Biostatistics Volume 12. New York 1989
+
+with derived variables [##] by jh
+
+Originally thought of as a 20-year study, the population 
+under age 30 was excluded because the investigators estimated 
+that too few would develop arteriosclerotic or hypertensive 
+heart disease before the study's end. By contrast those over 
+59 were excluded because too many may already have 
+cardiovascular disease at the study's start. A sample size of 
+6000 was feasible and estimated to be sufficient for 2000 new 
+cases of cardiovascular disease to develop by the end of the 
+twentieth year. This number of new cases would be "large 
+enough to insure statistically reliable findings" [Dawber et 
+al 1951]. Since 6000 was considerably smaller than the town 
+population in the target ages, a random sampling plan to 
+avoid the unknown bias of self-selection was adopted.
+
+Sampling was based on the annual publication by the Town of 
+Framingham of a list of all residents age 20 or over. The 
+list was stratified by family size and by precinct of 
+residence. Within strata the list was arranged by address. So 
+as not to break up families, e.g., include a husband in the 
+sample but exclude his wife, sampling selection was of 
+families not individuals. Within each stratum, a systematic 
+sample of two families was selected from each successive 
+group of three families on the list. Everyone aged 30-59 
+inclusive in the selected families was considered to be in 
+the sample. The prediction was that about 90 percent of the 
+selected individuals could be examined. In fact, the 
+acceptance rate was 69 percent. When this lower acceptance 
+rate became known it was decided to accept additional study 
+subjects who were volunteers so as to have an adequate number 
+under study. The final study population consisted of 4469 
+sample respondents and 740 volunteers. In early publications 
+from the study these two groups were shown separately, with 
+little important distinction ever noted between them insofar 
+as incidence findings are concerned. Not much attention has 
+ever been given to Framingham prevalence findings and as 
+stated in Chapter 10, the opportunity for biased selection 
+when studying prevalence is considerable. The possibility of 
+bias is much reduced if the study relates to associations 
+with the future occurrence of disease.
+
+The Appendix list represents a further selection of the 
+Framingham Heart Study data (sample respondents and 
+volunteers combined) When    examinations were made in 1948, 
+serum cholesterol was not recognized as a potential risk 
+factor. Very many of the first examinations had been 
+completed before cholesterol measurements began. Excluded 
+from the Appendix are all persons without a serum cholesterol 
+value on exam 1 and also all those under age 45 at 
+examination 1. We have selected only 13 (including coronary 
+heart disease incidence and mortality by cause through 
+examination 10) from the 394 variables on the tape provided 
+by the National Heart Lung and Blood Institute to provide the 
+desired material for comparison of methods and for student 
+exercises. Of course, the Appendix is not a random sample of 
+the Framingham data for the first 10 examinations 
+(examinations were every two years and we have 18 years of 
+follow-up), nevertheless it is useful for our specific 
+objectives. A description of the 13 variables appears at the 
+beginning of the Appendix.
+
+For more complete information on the Framingham sample, see:
+
+Dawber et al 1951 Am J Pub Health 41:279;
+
+Gordon and Kannel 1968 The Framingham Study, Section 1,
+National Heart Institute;
+
+Dawber TR 1980. The Framingham Study: The Epidemiology of 
+Atherosclerotic Disease. Boston: Harvard University Press..
+
+Appendix
+
+DESCRIPTION OF VARIABLES IN THE Framingham HEART STUDY DATA 
+SET
+
+The listing and summary tabulations included herein contain 
+data for 13 variables including 18-year follow-up for CHD 
+incidence and total mortality. A brief description of the 
+definition, coding, and range of values for each variable is 
+presented below Where abbreviations are used to describe 
+variables, they are shown preceding the variable name. The 
+listing is in sequence by age-sex group, within each age-
+group by CHD code, and within each CHD code by systolic blood 
+pressure on examination 1. For further description and 
+discussion of these data, see Gordon and Shurtleff [1973] and  
+Shurtleff[1974].
+
+Gordon T and Shurtleff D (1973) The Framingham Study, NIH 
+Publication 74-478, Section 29, Department of Health, 
+Education and Welfare.
+
+Shurtleff D (1974) The Framingham Study, NIH Publication 74-
+599, Section 30, Department of Health, Education and Welfare.
+
+NOTE from JH: Because data were scanned, and touched up by 
+hand, there may be some discrepancies from the listing on
+pp 247-274 of the Kahn and Sempos book. If you discover any,
+please let JH know.
+
+
+ID       OBS in listing by Kahn and Sempos
+
+CHD      CORONARY HEART DISEASE DIAGNOSIS
+
+         O    No evidence of CHD through examination 10
+
+         1    Preexisting CHD at examination 1 
+              (prevalence cases)
+
+         2-10 Examination at which definite CHD is first
+              diagnosed (incidence cases). A participant was 
+              diagnosed as an incidence case if, after review
+              of all available information, a panel of
+              investigators agreed upon a definite diagnosis
+              of myocardial infarction, coronary
+              insufficiency, angina pectoris, or CHD death.
+
+AGE      AGE AT EXAM 1  
+
+           45-62 Age in years (CONTINUOUS) 
+		   
+AGE_Lo   [##]
+         = 45 + INT((AGE-45)/5)*5;  * lower and upper limits    *;
+		 
+AGE_Up   [##]
+         = AGE_L + 4;               * of 5-year age categories  *;
+		   
+
+I_male   [##]
+         not explicitly included in  Kempos text ... 
+         computed by JH from ID
+
+         = 1 (male  )   if ID <= 669
+         = 0 (female)   if ID >  669
+
+
+SBP      SYSTOLIC BLOOD PRESSURE, first examiner, EXAM 1
+
+           90-300 mm Hg
+
+SBP10    SYSTOLIC BLOOD PRESSURE, first examiner, EXAM 10
+
+           .      Missing data (635 persons)
+           94-264 mm Hg
+
+
+DBP      DIASTOLIC  BLOOD PRESSURE, first examiner, EXAM 1
+
+           50-160 mm Hg
+
+CHOL     SERUM CHOLESTEROL, EXAM 1
+
+           96-430 mg/100 ml
+
+FRW      Framingham RELATIVE WEIGHT, EXAM 1,
+         expressed as a percentage
+
+           .      Missing data (11 persons)
+           52-222 FRW was calculated from the ratio of the
+                  subject's body weight to the median weight
+                  for his/her sex-height group.
+
+CIG      NUMBER IF CIGARETTES SMOKED PER DAY, EXAM 1
+
+           .      Missing data (1 person)
+           0      No cigarettes smoked
+           1-60
+
+YRS_CHD  PERSON YEARS OBSERVATION UNTIL WITHDRAWN
+         OR FIRST CHD EVENT
+
+           .      Preexisting CHD at exam 1 (43 not at risk)
+           0-18   Years (See * below for how calculated.)
+
+new_chd  [##]
+          = . if chd = 1 (i.e., if existing disease at entry)
+		  = 0 if chd = 0 
+          = 1 if chd >= 2 and chd <= 10
+		 
+YRS_DTH  PERSON YEARS OBSERVATION FOR MORTALITY
+
+           1-18   Years (See ** below for how calculated.)
+
+DEATH      0      Alive at examination 10
+           2-10   First examination that had been scheduled
+                  following date of death.
+				  
+I_dead    [##]
+          = 0 (alive) if death = 0
+          = 1 (dead)  if death > 0
+
+CAUSE    CAUSE OF DEATH
+
+           .      Missing data (19 persons)
+           0      Alive at examination 10
+           1      CHD (sudden)
+           2      CHD (not sudden)
+           3      Stroke
+           4      Other cardiovascular disease
+           5      Cancer
+           6      Other
+
+
+----------------------------------
+* "YRS_CHD" From Ch 7, page 203...
+
+The years of observation regarding development of coronary 
+heart disease are shown in the Appendix listings under the 
+label YRS_CHD. We remind you that the Framingham examinations 
+were approximately two years apart and that incidence cases 
+of coronary disease could be identified for the first time 
+either on one of the periodic examinations (silent infarct, 
+angina pectoris, coronary insufficiency) or during the 
+interval between examinations (hospitalization for or death 
+from coronary heart disease). We also remind you that the 
+Appendix variable labeled CHD is coded O for those remaining 
+free of coronary heart disease, 1 for those found to have the 
+disease on examination 1 (prevalence cases) and 2-10 for 
+those first diagnosed as incidence cases on examinations 2-
+10, respectively. For teaching purposes, we have approximated 
+and simplified the time under observation as follows:
+
+
+a If coronary heart disease code is negative,
+  i.e., CHD never diagnosed, then 
+    YRS_CHD = 2 x (number of the last examination taken - 1).
+
+  Cutting off observation at the time of the last
+  examination reflects the fact that occurrence of
+  some manifestations of coronary disease after the
+  last examination is unlikely to come to the attention
+  of the examiners.
+
+b If coronary heart disease code is >= 2,
+  i.e., incidence cases,
+    YRS_CHD = 2 ( (CHD - 1) - 1 ).
+
+  In this instance we are using the CHD code to
+  represent the number of the first examination on which
+  diagnosis was made or the number of the first examination
+  following interval diagnosis. This formulation presumes
+  that disease onset was midway between the examination on
+  which diagnosed and the preceding examination.
+
+-----------------------------------------
+** "YRS_DTH" From Ch 7, page 203...
+
+The approximate years of observation with respect to 
+mortality are shown in the Appendix listings and Appendix 
+summary tabulations under the label YRS_DTH. For our purposes 
+we have simplified mortality observation on time as follows:
+
+For those not reported dead during the 18-year observation 
+period
+
+ YRS_DTH = 18
+
+For those dying during the observation period
+
+ YRS_DTH = 2 x (exam number following date of death - 1) - 1
+
+For a death occurring between scheduled examinations 6 and 7
+
+ YRS_DTH = 2 x (7 - 1) - 1 = 11
+
+This assumes two years between all scheduled examination 
+dates and that death occurs only midway between dates.
+
+---
+jh 1997.01.05, modified 2001.06.16
+
