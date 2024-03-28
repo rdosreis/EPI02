@@ -1,0 +1,41 @@
+---
+title: "EPI02 - Fundamentos de Bioestatística"
+subtitle: "Algumas questões iniiciais"
+fontsize: 10pt
+author: |
+  | Rodrigo Citton P. dos Reis
+  | `citton.padilha@ufrgs.br`
+institute: |
+  | \textsc{Universidade Federal do Rio Grande do Sul}
+  | \textsc{Faculdade de Medicina}
+  | \textsc{Programa de Pós-Graduação em Epidemiologia}
+date: |
+  | Porto Alegre, 2024
+---
+
+# Questão 1: a mensuração do Diabetes
+
+\begin{mybox}{Definiçãodo diabetes}
+
+O diabetes ``melito'' (doce como mel) recebe esse nome da perda de açúcar que torna a urina doce. Ele ocorre em duas formas: o diabetes tipo 1, ou juvenil, inicia-se com mais frequência antes dos trinta anos, enquanto o diabetes tipo 2, ou adulto, começa na maioria das vezes após os trinta. Os dois tipos, que diferem em termos de lesões subjacentes e resposta ao tratamento, têm em comum uma deficiência do metabolismo de açúcares, levando a níveis anormais de glicose no sangue. Entre as consequências estão a passagem de glicose na urina e um alto nível de glicose nos tecidos corporais, induzindo uma série de complicações nos sistemas cardiovascular e nervoso. É a progressão dessas complicações que faz do diabetes uma doença potencialmente muito grave.
+
+\end{mybox}
+^[Saracci, R. **Epidemiologia: uma breve introdução**. Porto Alegre: L&PM, 2019.]
+
+## Questão 1: a mensuração do Diabetes {.allowframebreaks}
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='90%', paged.print=FALSE}
+
+knitr::include_graphics(here::here('imagens','dm_criterio.png'))
+
+```
+
+^[Cobas R, Rodacki M, Giacaglia L, Calliari L, Noronha R, Valerio C, Custódio J, Santos R, Zajdenverg L, Gabbay G, Bertoluci M. Diagnóstico do diabetes e rastreamento do diabetes tipo 2. **Diretriz Oficial da Sociedade Brasileira de Diabetes (2023)**. DOI: 10.29327/557753.2022-2.]
+
+## Questão 1: a mensuração do Diabetes {.allowframebreaks}
+
+- O que é necessário para medir a ocorrência do diabetes em uma população ou em um grupo dentro da população?
+    + Quais os elementos necessários?
+    + Como podemos caracterizar uma população?
+    + Com relação ao diabetes, como podemos proceder com a medição do diabetes na população brasileira?
+
