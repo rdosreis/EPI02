@@ -1,288 +1,568 @@
 ---
-title: "MAT02262 - Estatística Demográfica I"
-subtitle: | 
-  | Demografia, estatística e outras abordagens do estudo da população
-  | (ou conceitos e definições)
+title: "EPI02 - Fundamentos de Bioestatística"
+subtitle: "Conceitos e definições"
 fontsize: 10pt
 author: |
   | Rodrigo Citton P. dos Reis
   | `citton.padilha@ufrgs.br`
 institute: |
   | \textsc{Universidade Federal do Rio Grande do Sul}
-  | \textsc{Instituto de Matemática e Estatística}
-  | \textsc{Departamento de Estatística}
+  | \textsc{Faculdade de Medicina}
+  | \textsc{Programa de Pós-Graduação em Epidemiologia}
 date: |
   | Porto Alegre, 2024
 ---
 
-# Delimitação do campo {.allowframebreaks}
+## Relembrando
 
-- O estudo das \structure{populações humanas}, no que toca ao seu \structure{tamanho}, sua \structure{composição} e \structure{transformações}, é o objetivo de várias disciplinas com orientações um pouco distintas, mas relacionadas entre si.
-\
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', purl=FALSE}
 
-- O termo \structure{demografia} surgiu na França em meados do século XIX, embora algumas das suas ideias anteriormente eram conhecidas como \structure{aritmética política} ou \structure{estatística humana}.
-- A palavra é derivada do grego: 
-    + $\delta\acute{\eta}\mu o\zeta$ (\structure{demos}, habitantes de uma área);
-    + e $\gamma\rho\acute{\alpha}\varphi\varepsilon\iota\nu$ (\structure{graphein}, escrever/registrar);
-    + ou seja, a \structure{descrição da população de um país ou área}.
+knitr::include_graphics(here::here('imagens','relembrando', 'aula-01.png'))
+
+```
+
+
+# A Estatística e o seu papel {.allowframebreaks}
+
+## Dados $\leadsto$ Conhecimento
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+knitr::include_graphics(here::here('imagens', 'dicing_with_death.jpg'))
+```
+
+## Dados $\leadsto$ Conhecimento
+
+- Em alguma fase de seu trabalho, o pesquisador depara-se com o problema de __analisar__ e __entender__ um __conjunto de dados__ relevante ao seu particular objeto de estudos. 
+- Ele necessitará trabalhar os dados para __transformá-los em informações__, para compará-los com outros resultados, ou ainda para __julgar sua adequação__ a __alguma teoria__.
+
+## O Método Científico {.allowframebreaks}
+
+- De modo bem geral, podemos dizer que a essência da Ciência é a __observação__ e que seu objetivo básico é a __inferência__.
+    - Os cientistas (sociais ou físicos) geralmente fazem uso do \structure{método científico} nas suas tentativas de compreender o mundo.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='60%', out.height='60%',  paged.print=FALSE, purl=FALSE}
+knitr::include_graphics(here::here('imagens', 'metodo.png'))
+```
 
 \framebreak
 
-- Seja qual for o nome escolhido, existe certo consenso de que a demografia trata do \structure{estudo estatístico das populações humanas}, com maior ênfase nos **conjuntos de pessoas** do que nos indivíduos que as compõem.
+Suponha que estamos interessados em descrever e explicar o __padrão dos casos de câncer__ em uma área metropolitana.
 
-\begin{mybox}{População}
-O termo ``população'' é interpretado aqui no sentido estatístico mais amplo de ``coleção de elementos unificados por uma definição comum''.
-\end{mybox}
+1. Observação/registro dos casos;
+2. Descrição do padrão por meio da apresentação dos casos em um mapa.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='50%',  paged.print=FALSE, purl=FALSE}
+knitr::include_graphics(here::here('imagens', 'mapa_casos.jpg'))
+```
+
+\framebreak
+
+3. O que explica o resultado observado?
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='50%',  paged.print=FALSE, purl=FALSE}
+knitr::include_graphics(here::here('imagens', 'mapa_clusters.jpg'))
+```
 
 \framebreak
 
-\begin{mybox}{Aristóteles}
-``O todo é maior do que a soma das partes''.
-\end{mybox}
+4. Formulação de hipóteses/modelos explicativos.
 
-\begin{mybox}{Durkheim}
-``A sociedade não é simples soma de indivíduos, e, sim, formada por associação, que representa uma realidade específica, com seus caracteres próprios. Sem dúvida, nada se pode produzir de coletivo, se consciências particulares não existem; mas esta condição necessária não é suficiente. É preciso ainda que as consciências estejam associadas, combinadas de determinada maneira; dessa combinação resulta a vida social e, por conseguinte, é esta combinação que a explica. Agregando-se, penetrando-se, fundindo-se, as almas individuais dão nascimento a um ser, psíquico se quisermos, mas que constitui individualidade psíquica de novo gênero''.
-\end{mybox}
+(Exemplo) *Hipótese:* o padrão de casos de câncer está relacionado à distância das usinas de energia locais.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='50%',  paged.print=FALSE, purl=FALSE}
+knitr::include_graphics(here::here('imagens', 'cancer_distancia.png'))
+```
 
 \framebreak
+
+5. Os dados fornecem evidências para avaliarmos as hipóteses formuladas.
+6. A partir desta avaliação, modelos e hipóteses podem ser reconsiderados, ou conclusões teóricas podem ser elaboradas.
+
+- Os métodos estatísticos ocupam um papel central no método científico, como visto no exemplo dos casos de câncer, pois nos permitem __sugerir__ e __testar__ hipóteses.
+
+## O que é Estatística?
+
+Essa pergunta já vem sendo feita (e diversas vezes) há muito tempo.
+
+- A persistência da pergunta e a variedade das respostas durante os anos sugerem que a Estatística não se caracteriza como um objeto singular.
+- Ainda, a Estatística apresenta diferentes faces para diferentes áreas da ciência.
+
+## Uma perspectiva histórica {.allowframebreaks}
+
+A Estatística mudou drasticamente desde os primeiros dias até o presente, passando de uma profissão que reivindicou uma objetividade extrema que os estatísticos apenas coletariam dados (e não os analisam) para uma profissão que busca parceria com cientistas em todas as etapas da investigação, do planejamento à análise.
+
+- O indício mais remoto do que tenha sido um censo parece ter ocorrido na China, por volta de \structure{2.238 a.C.}, quando o imperador Yao mandou fazer a \structure{contagem da população} e das \structure{lavouras cultivadas}.
+
+\framebreak
+
++ Por muito tempo, o aspecto descritivo da Estatística manteve-se como a única faceta desta ciência .
+- No século XVII, ocorrem as primeiras interpretações de dados.
+    + Em 1693, foram publicados pela primeira vez, em Londres, os totais anuais de falecimentos, estratificados por sexo.
+    + Primeiros estudos formais da teoria das probabilidades.
+
+\framebreak
+
+Consolidação dos estados nacionais (e dos seus orgãos da burocracia), Industrialização, Revolução Científica.
+
+- Houve, no período, um **aperfeiçoamento da teoria das probabilidades** e **estatística inferencial**, com a aplicação da **teoria da distribuição normal** por \structure{Aldophe Quételet (1796-1874)} no estudo de diversas características das populações humanas: altura, peso, natalidade, mortalidade, renda, etc.
+- A **teoria da estimação** na estatística também recebeu contribuições nos
+procedimentos de preencher espaços vazios entre os dados coletados, por meio das **técnicas de previsão**, **retrospectiva** e **interpolação**.
+
+## Uma perspectiva histórica
+
+__Pascal-Fermat (Séc. XVII)__
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'pascal-fermat-mail-2.jpg'))
+
+```
+
+## Uma perspectiva histórica
+
+__Florence Nightingale (Séc. XIX)__
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'florence-chart-2.jpg'))
+
+```
+
+## Uma perspectiva histórica
+
+__Galton-Pearson (Séc. XIX e XX)__
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'pearson-galton.jpg'))
+
+```
+
+## Uma perspectiva histórica
+
+__William S. Gosset, o _Student_ (Séc. XX)__
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'gosset-2.jpg'))
+
+```
+
+## Uma perspectiva histórica
+
+__Ronald A. Fisher (Séc. XX)__
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'Fisher-2.jpg'))
+
+```
+
+## Uma perspectiva histórica
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'snow-hill-doll-nightgale.png'))
+
+```
+
+## Uma perspectiva histórica
 
 \begin{center}
-\Large
-E quais são as características quantitativas das populações humanas que formam o \structure{objeto da demografia}? 
+{\bf Essa história continua!}
+
+Para saber mais, veja:
 \end{center}
 
-\framebreak
-\normalsize
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
 
-Certamente formam parte do **núcleo central da demografia**:
-
-+ o **tamanho das populações**;
-
-```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='50%', out.height='50%', paged.print=FALSE}
-
-knitr::include_graphics(here::here('imagens', 'tamanho_pop.png'))
-
-```
-   
-\framebreak
-
-+ a sua **densidade** e **distribuição geográfica**;
-
-```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='70%', out.height='50%', paged.print=FALSE}
-
-knitr::include_graphics(here::here('imagens', 'densidade_e_dist_pop.png'))
+knitr::include_graphics(here::here('imagens', 'livros-hist.png'))
 
 ```
 
-\framebreak
+## O papel da estatística na pesquisa
 
-+ a sua **composição por idade e sexo**;
+- No \structure{planejamento}, auxilia na escolha de situações experimentais e na determinação da quantidade de indivíduos a serem examinados.
+- Na \structure{análise}, indica técnicas  para resumir e apresentar as informações, bem como para comparar as situações experimentais.
+- Na \structure{elaboração das conclusões}, os vários métodos estatísticos permitem generalizar a partir dos resultados obtidos.
 
-```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='70%', out.height='50%', paged.print=FALSE}
+De modo geral, não existe certeza sobre a correção das conclusões científicas; no entanto, os métodos estatísticos permitem determinar a **margem de erro** associada às conclusões, com base no conhecimento da variabilidade observada nos resultados.
 
-knitr::include_graphics(here::here('imagens', 'piramide_etaria_pop.png'))
+## O que é a estatística?
 
-```
+A __estatística__\footnote{Do grego  \emph{statistós}, de \emph{statízo}, \textbf{``estabelecer''}, \textbf{``verificar''}, acrescido do sufixo \emph{ica}.} é a ciência que tem por objetivo orientar a coleta, o resumo, a apresentação, a análise e a interpretação de dados.
 
-\framebreak
+- Podem ser identificadas duas grandes áreas de atuação desta ciência:
+    + a __estatística descritiva__, envolvida com o resumo e a apresentação dos dados.
+    + a __estatística inferencial__, que ajuda a concluir sobre conjuntos maiores de dados (populações) quando apenas partes desses conjuntos (as amostras) foram estudadas.
 
-+ o seu **ritmo de crescimento**;
+## O que é a estatística?
 
-```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='50%', out.height='50%', paged.print=FALSE}
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', out.height='80%', paged.print=FALSE, purl=FALSE}
 
-knitr::include_graphics(here::here('imagens', 'crescimento_pop.png'))
-
-```
-
-\framebreak
-
-+ e a divisão do crescimento por componentes **(óbitos, nascimentos e migrações)**.
-
-```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='50%', out.height='50%', paged.print=FALSE}
-
-knitr::include_graphics(here::here('imagens', 'obitos_nascimentos_migracoes_pop.png'))
+knitr::include_graphics(here::here('imagens', 'Descritiva_Inferencia.png'))
 
 ```
 
-\framebreak
+# A Estatística Descritiva
 
-- Para alguns demógrafos, 
-    + o estudo da **mobilidade social da população** e o estudo da sua **composição por níveis de educação e atividade econômica** se encaixam dentro da definição;
-    + enquanto outros consideram que tais temas pertencem à sociologia ou à economia.
-- O estudo da \structure{mortalidade}, que diz respeito à intensidade e às idades típicas de morte das pessoas, claramente **faz parte da demografia**.
+## O que é a estatística descritiva?
 
-\framebreak
+- A __Estatística Descritiva__ corresponde aos procedimentos relacionados com a \structure{coleta}, \structure{elaboração}, \structure{tabulação}, \structure{análise}, \structure{interpretação} e \structure{apresentação} dos \structure{dados}.
+- Isto é, inclui as técnicas que dizem respeito à sintetização e à descrição de dados numéricos.
+- Estas técnicas podem ser utilizadas em pelo menos dois contextos
+    + Análise da \structure{consistência dos dados}.
+    + \structure{Análise Exploratória de Dados} (_Exploratory Data Analysis_ - EDA)\footnote{Tukey, J. W. \emph{Exploratory data analysis}, Reading:Addison-Wesley, 1977.}.
+- Tais métodos tanto podem ser gráficos como envolver análise computacional.
 
-- Já o estudo da **morbidade**, ou seja, o estudo quantitativo dos padrões de doenças numa população humana, pode ser feito por \structure{demógrafos}, \structure{epidemiologistas} ou \structure{estatísticos da saúde}.
-- O mesmo ocorre com a **nupcialidade** e a **divorcialidade**, cujo estudo pode ser motivado pelo seu interesse demográfico, como um dos **determinantes da reprodução**, mas que evidentemente tem ramificações que vão muito além desse interesse mais restrito, para a área de \structure{sociologia da família}.
+## Alguns exemplos
 
-\framebreak
+\footnotesize
+Descriptive Statistics
 
-<!-- - Considera-se que um tema/variável merece análise sistemática do ponto de vista da demografia se for diretamente relevante para a determinação do número de nascimentos, óbitos ou migrações que ocorrem numa população ou as suas variações entre subpopulações. -->
-<!-- - Por exemplo, o estado civil ou conjugal de uma pessoa afeta diretamente a sua propensão a ter filhos. -->
-<!-- - A cor ou etnia geralmente não são consideradas variáveis propriamente demográficas, apesar de constar em alguns \alert{censos}, como é o caso do Brasil. -->
+tobacco  
 
-\begin{mybox}{O objeto da demografia}
-O \structure{Dicionário Demográfico Multilíngue}\footnote{http://www.demopaedia.org/} define o objeto de estudo da demografia como ``o estudo da população humana'' no que toca a ``sua dimensão, estrutura, evolução e características gerais, analisados principalmente do ponto de vista quantitativo''.
+**N:** 1000  
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, purl=FALSE, results='asis'}
+library(summarytools)
+
+descr(tobacco, style = 'rmarkdown', headings = F)
+```
+
+## Alguns exemplos
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', out.height='80%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'tab1.png'))
+
+```
+
+# Conceitos básicos
+
+## Unidades experimentais e observacionais
+
+\begin{mybox}{Unidade}
+(experimental ou observacional) é a menor unidade a fornecer informação.
 \end{mybox}
 
++ __EX.:__ alunos, pacientes, participantes de um estudo, animais, plantas, carros, hospitais, escolas, cidades, universidades, países, _tweets_, etc.
 
-<!-- ::: {.block} -->
-<!-- ### O objeto da demografia -->
 
-<!-- O \structure{Dicionário Demográfico Multilíngue}\footnote{http://www.demopaedia.org/} define o objeto de estudo da demografia como "o estudo da população humana" no que toca a "sua dimensão, estrutura, evolução e características gerais, analisados principalmente do ponto de vista quantitativo". -->
+<!-- ### Crash course de inferência causal -->
 
-<!-- ::: -->
+<!-- __Qual o melhor tratamento para o choque séptico?__ -->
 
-## Delimitação do campo {.allowframebreaks}
+<!-- Dois tipos de estudo podem ser conduzidos para responder a esta questão de pesquisa: -->
 
-- A demografia está amplamente preocupada em responder perguntas sobre:
-    + **como as populações mudam**;
-    + com a **medição da população**;
-    + e com os **componentes da mudança da população**.
-- O campo mais amplo de \structure{estudos de população} abrange questões sobre
-    + por que essas mudanças ocorrem;
-    + e com quais consequências/implicações;
-    + e abrange uma ampla gama de pesquisas multidisciplinares sobre características e comportamento de populações e subgrupos populacionais.
+<!-- 1. Em um \structure{experimento aleatorizado} (_randomized trial_), uma moeda justa é lançada repetidamente para designar o tratamento de cada paciente. -->
+<!-- 2. Um \structure{estudo observacional} é uma investigação empírica em que o objetivo é elucidar relações de causa e efeito, em que não é factível o uso de experimentação controlada, no sentido de ser capaz de impor procedimentos ou tratamentos cujos os efeitos se deseja descobrir. -->
 
-# Usos e especialidades no campo da população {.allowframebreaks}
+## Dados e variáveis {.allowframebreaks}
 
-Podemos dividir a demografia em seis grandes áreas __(Nazareth, 1996)__\footnote{Nazareth, J. Manuel (1996). \emph{Introdução à Demografia: Teoria e Prática}. Lisboa, Editorial Presença.}:
+\begin{mybox}{Dados}
+São as informações obtidas de uma unidade experimental ou observacional.
+\end{mybox}
 
-1. Análise Demográfica;
-2. Projeções Demográficas e a Prospectiva;
-3. Demografia Histórica;
-4. Demografia Social;
-5. Políticas Demográficas; e
-6. Ecologia Humana.
-
-## Usos e especialidades no campo da população {.allowframebreaks}
-
-__Zeng (2010)__\footnote{Zeng, Yi (org.) (2010). \emph{Demography}. Oxford UK, EOISS Publ., UNESCO Encyclopedia of Life Support Systems.} inclui especialidades adicionais, como as seguintes:
-
-- Comportamento Sexual e Saúde Reprodutiva;
-- Planejamento Familiar e Saúde Reprodutiva;
-- Demografia da Saúde;
-- Demografia Antropológica;
-- Demografia Econômica;
-- Demografia dos Negócios e Pequenas Áreas;
-- Biodemografia;
-- Demografia do Envelhecimento; e
-- \structure{Ciências Atuariais}.
-
-## Usos e especialidades no campo da população {.allowframebreaks}
-
-- A \structure{demografia atuarial} está focada na **mortalidade** e as suas consequências para os **sistemas de seguro de vida** e **Previdência Social**. 
-    - Além de aspectos demográficos e matemáticos, isso envolve considerações financeiras e jurídicas.
-- Uma questão típica que se coloca neste contexto é, por exemplo:
-    + quantos anos o assegurado médio da Previdência Social ainda vive depois de aposentar-se?
-- Estas questões também são estudadas pelos **demógrafos econômicos**, embora a partir de uma visão econômica mais ampla do que do ponto de vista do **equilíbrio das contas previdenciárias**.
+- __EX.:__ "Vitor tem 25 anos e é fumante". Os dados são "25 anos" e "fumante".
 
 \framebreak
 
-- Sobre a \structure{análise estatística} dos fenômenos relacionados com as **populações humanas** podemos dizer que essa se divide entre várias disciplinas. Além da demografia propriamente dita, certos aspectos do seu estudo pertencem:
-    + à estatística;
-    + ao estudo dos indicadores sociais;
-    + à epidemiologia:
-    + sociologia;
-    + economia;
-    + geografia;
-    + e até mesmo à história.
+\begin{mybox}{Variável}
+
+É toda característica que, observada em uma unidade (experimental ou observacional), pode variar de um indivíduo para outro.
+
+\end{mybox}
+
+- __EX.:__ idade, sexo, altura, nível de hemoglobina no sangue, espaçamento entre plantas, doses de um medicamento, tipo de medicamento, cultivares, número de caracteres, velocidade da rede, tempo gasto na rede social, nível de monóxido de carbono em emissões do escape de automóveis, etc.
+
+\framebreak
+
+- Em geral, na literatura estatística, as variáveis são denotadas por letras latinas maiúsculas:
+    + $X, Y, Z$;
+    + $X_1, X_2, \ldots, X_p$.
+
+- Já os valores que as variáveis assumem são denotados, de forma genérica, por letras latinas minúsculas:
+    + $X = x, Y = y, Z = z$.
+    
+## Tipos de variáveis
+
+\footnotesize
+
+- É importante identificar que __tipo de variável__ está sendo estudada, uma vez que são recomendados __procedimentos estatísticos diferentes__ em cada situação.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='80%', out.height='70%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'classe_var.png'))
+
+```
+
+## Variáveis quantitativas
+
+\footnotesize
+
+- A __variável quantitativa__ é expressa por números.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='90%', out.height='80%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'var_quanti.png'))
+
+```
+
+## Variáveis quantitativas discretas
+
+\footnotesize
+
+- A __variável discreta__ resulta do processo de contagem.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='60%', out.height='80%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'var_discreta.jpg'))
+
+```
+
+## Variáveis quantitativas contínuas
+
+\footnotesize
+
+- A __variável contínua__ resulta do processo de medição.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='70%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'var_continua.jpg'))
+
+```
+
+## Variáveis qualitativas
+
+\footnotesize
+
+- A __variável qualitativa__ é expressa por palavras.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'var_quali.png'))
+
+```
+
+## Variáveis qualitativas ordinais
+
+\footnotesize
+
+- A __variável ordinal__ tem duas ou mais categorias que são, necessariamente, organizadas segundo uma lógica.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='100%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'var_ordinal.jpg'))
+
+```
+
+## Variáveis qualitativas nominais
+
+\footnotesize
+
+- A __variável nominal__ tem duas ou mais categorias, que podem ser apresentadas em qualquer ordem.
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='70%', paged.print=FALSE, purl=FALSE}
+
+knitr::include_graphics(here::here('imagens', 'var_nominal.jpg'))
+
+```
+
+## Variáveis dicotômicas
+
+Um "subtipo" de variável, muito comum nas investigações epidemiológicas, é a \structure{variável dicotômica} (ou variável binária).
+
+- Quando uma variável qualitativa apresenta apenas dois níveis (duas categorias), esta é chamada de variável dicotômica.
+
+- **EX.:** possuir níveis altos de catecolaminas (**Sim** ou **Não**).
+
+Usualmente, se codificam os dois níveis da variável dicotômica por \structure{0 (não/ausente)} e \structure{1 (sim/presente)}.
+
+- Na literatura ainda veremos *expostos* ($E$) e *não-expostos* ($\bar{E}$) e *casos* ($C$) e *não-casos (controles)* ($\bar{C}$).
+
+## Exercício (pequenos grupos)
+
+1. Consulte o **questionário da PNS 2013** e, a partir das questões, apresente variáveis de acordo com a classificação discutida anteriormente.
+    - Sugestão: utilizes os módulos M e N.
+2. Discuta sobre a natureza do dado e a sua mensuração: dados originalmente contínuos podem ser categorizados na mensuração e/ou na análise? Ou seja, a partir da coleta de uma variável, podemos construir novas variáveis? Apresente exemplos destas situações.
+
+## População {.allowframebreaks}
+
+\begin{mybox}{População ou universo}
+
+Esse termo é usado em estatística com um sentido bem mais amplo do que na linguagem coloquial.
+
+É entendido aqui como o {\bf conjunto de todos os elementos} que apresentam uma ou mais {\bf características em comum}.
+
+\end{mybox}
+
+- __EX.:__ a população de adultos brasileiros.
+    + Estes indivíduos têm em comum a nacionalidade brasileira e a idade $\geq 18$.
+
+\framebreak
+
+- Este conjunto por vezes é denominado por $U$ (de __conjunto universo__).
+- O __tamanho da população__ é a sua quantidade de elementos, que anotamos por $N$.
+- Uma população pode ser __finita__ (limita em tamanho; $N < \infty$) ou __infinita__ ($N =\infty$).
+    + __Exemplo de pop. finita:__ os residentes de Porto Alegre em um momento específico.
+    + __Exemplo de pop. infinita:__ equipamentos (de um certo tipo) fabricados em série.
+
+\framebreak
+
+- A \structure{população de estudo} é definida como __a parte identificável e acessível do conjunto__ \structure{(população-alvo)} para o qual idealmente se deseja a informação.
+    + A distância entre ambas é decorrente quer das dificuldades da realidade, quer das limitações impostas pelo delineamento.
     
 \framebreak
 
-- O objeto primário de trabalho da demografia são as populações finitas, o que remonta ao uso da **estatística descritiva**.
-- Contudo, isso não eliminava os problemas de se lidar com populações reconhecidamente finitas, mas desconhecidas.
-    + Esse desconhecimento poderia ser atribuído a questões de ordem prática (população numerosa, dificuldade operacional na contagem, etc.) ou à própria impossibilidade de acesso aos dados precisos (ausência de registros).
+- \structure{População alvo:} população sobre a qual se quer uma resposta (objetivo).
+- \structure{População de estudo:} população da qual a amostra é obtida.
+
+- População alvo $=$ População de estudo __(ideal)__.
+- População alvo $\approx$ População de estudo __(comum; aceitável)__.
+- População alvo $\neq$ População de estudo __(ruim)__.
+
+\framebreak
+
+- O objeto dos estudos são sempre as populações, pois, somente assim, as conclusões dos trabalhos científicos não se restringem apenas às unidades neles estudadas.
+
+- No entanto, como as populações são constituídas de um número muito grande de elementos, são estudadas por intermédio de alguns desses elementos, os quais constituirão o que se denomina uma **amostra**.
+
+## Censo e amostra {.allowframebreaks}
+
+- Quando o estudo é realizado com toda a população de interesse, chamemos este estudo de __censo__.
+- Por motivos de tempo, custo, logística, entre outros, geralmente não é possível realizar um censo.
+    + Nestes casos, estudamos apenas uma parcela da população, que chamamos de __amostra__.
+
+\framebreak
+
+### Censo vs. amostra
+
+À primeira vista, uma coleta de dados realizada em toda a população é preferível a uma realizada apenas numa parte da população. Na prática, entretanto, o oposto é frequentemente verdadeiro porque:
+
+1. Um censo é impossível quando a população é infinita.
+2. Um censo pode ser muito custoso.
+3. Rapidez: estudar toda a população pode despender de muito tempo, não sendo compatível com a urgência do estudo \structure{(como quando estudamos os casos de um surto de uma nova doença)}.
+4. É possível se aprender, com razoável confiança, sobre a população através de uma amostra.
+
+## Amostra
+
+\begin{mybox}{Amostra}
+
+É qualquer fração de uma população.
+
+\end{mybox}
+
+- Como sua finalidade é representar a população, deseja-se que a amostra escolhida apresente as mesmas características da população de origem, isto é, que seja uma amostra __"representativa"__  ou __"não-tendenciosa"__.
+- Tanto o número de indivíduos selecionados para a amostra (tamanho da amostra, $n$) quanto a técnica de seleção são extremamente importantes para que os resultados obtidos no estudo sejam generalizados para a população.
+
+<!-- ## Amostragem -->
+
+<!-- - A seleção da amostra pode ser feita de várias maneiras. -->
+<!-- - Esta dependerá: -->
+<!--     + Do grau de conhecimento que temos da população. -->
+<!--     + Da quantidade de recursos disponíveis. -->
+<!-- - A seleção da amostra tenta fornecer um subconjunto de valores o __mais parecido possível__ com a população que lhe dá origem. -->
+<!--     + __Amostra representativa__ da população. -->
+
+<!-- ## Amostra aleatória simples -->
+
+<!-- - A amostragem mais usada é a __amostra casual simples__ (ou aleatória simples). -->
+<!--     + Os indivíduos (unidades) da amostra são selecionados ao acaso, __com__ ou __sem reposição__. -->
+
+<!-- ```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='60%', paged.print=FALSE, purl=FALSE} -->
+<!-- knitr::include_graphics(here::here('imagens', 'simpleSample.png')) -->
+<!-- ``` -->
+
+<!-- ## Amostra estratificada -->
+
+<!-- - Eventualmente, se tivermos informações adicionais a respeito da população de interesse, podemos utilizar outros esquemas de amostragem mais sofisticados. -->
+
+<!--     + __Amostragem estratificada__ -->
+
+<!-- ```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='95%', paged.print=FALSE, purl=FALSE} -->
+<!-- knitr::include_graphics(here::here('imagens', 'estratificada.png')) -->
+<!-- ``` -->
+
+<!-- ## Amostra sistemática -->
+
+<!-- - Em outros casos, pode existir uma relação numerada dos itens da população que nos permitiria utilizar a chamada __amostragem sistemática__ em que selecionamos os indivíduos de forma pré-determinada. -->
+
+<!-- ```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='80%', paged.print=FALSE, purl=FALSE} -->
+<!-- knitr::include_graphics(here::here('imagens', 'SystematicSampling.jpg')) -->
+<!-- ``` -->
+
+<!-- ## Amostragem -->
+
+<!-- - Outros esquemas de amostragem poderiam ser citados e todos fazem parte da chamada __teoria da amostragem__, cujos detalhes não serão aprofundados. -->
+
+## Parâmetros, estatísticas e estimativas {.allowframebreaks}
+
+\begin{mybox}{Parâmetro}
+
+É um valor que resume, na população, a informação relativa a uma variável.
+\end{mybox}
+
+- __EX.:__ média populacional, prevalência populacional, coeficiente de variação populacional, taxa de mortalidade populacional, etc.
+
+- Por vezes, na literatura estatística, letras gregas são utilizadas para representar parâmetros:
+    + $\theta, \mu, \alpha, \beta$, etc.
+- Também podem ser utilizadas letras latinas (maiúsculas) e símbolos:
+    + $\overline{X}, P, \Var(X), DP(X), \Corr(X,Y)$, etc.
     
-- Por isso, o uso de **amostras** pela demografia faz com que, por meio da avaliação da **representatividade** (homogeneidade) em relação às suas populações de origem, a **inferência estatística** torne-se de amplo uso pelos demógrafos.
-
 \framebreak
 
-Algumas especialidades dentro da demografia têm usos bastante específicos. 
+\begin{mybox}{Estatística}
 
-- A \structure{demografia histórica} é um campo onde se desenvolvem técnicas próprias para lidar com as **deficiências dos dados arquivais** que servem de base para a **reconstrução da história da população**.
-- A \structure{demografia matemática} é um campo especializado dentro da demografia, matemática ou estatística que estuda as **relações formais** entre diferentes **variáveis demográficas** usando o **instrumental da matemática** e **teoria da probabilidade**, como **cadeias de Markov** e outros **processos estocásticos**.
-
-\framebreak
-
-- A \structure{demografia dos negócios} é um campo dentro dos estudos de mercado que faz uso intensivo de informação demográfica de \alert{censos} e \alert{inquéritos} especiais para descrever a estrutura dos mercados.
-    - Além das variáveis demográficas típicas, esses estudos fazem muito uso de informação sobre renda, ocupação, composição das famílias, posse de bens de consumo duráveis e dados obtidos de outras fontes sobre temas como consumo de diferentes tipos de produtos e padrões de uso de transporte.
-    - Estes temas também têm relevância para a administração pública, razão pela qual seja preferível usar o termo \structure{demografia aplicada}.
-
-\framebreak
-
-Como é o caso de qualquer \structure{ciência social baseada na observação}, uma das utilidades da demografia é que ela pode ajudar a formar e corrigir percepções sobre o mundo social. 
-
-- Por exemplo, ainda existe uma percepção de que o Brasil, mesmo depois de 2000, continua sendo um **país caracterizado pelo rápido crescimento da sua população**;
-    + o qual causaria **congestionamento**;
-    + e a necessidade de **expansão** constante da **infraestrutura** para fazer frente aos números crescentes de usuários.
-
-\framebreak
-
-- O estudo da demografia demonstra que essa percepção já deixou de ser correta há algum tempo.
-
-- Portanto, o congestionamento das grandes cidades e o desafio da manutenção das infraestruturas se devem à **redistribuição da população**, problemas ligados ao transporte e outros fatores analisados pela **geografia de população** e não a um suposto **crescimento explosivo** da população do país.
-
-Outra utilidade da demografia é que ela ajuda na formulação dos \structure{indicadores sociais} corretos para expressar as dimensões da realidade social que se pretende captar.
-
-\framebreak
-
-- Como as quantidades estudadas na demografia mantêm certas relações quantitativas previsíveis, a demografia pode ser usada em certas circunstâncias para \structure{verificar a consistência dos dados disponíveis}. 
-- O recurso mais conhecido para este propósito é a chamada \structure{Equação de Equilíbrio Demográfico} que será discutida em mais detalhe posteriormente no curso.
-
-\framebreak
-
-- Entretanto, de todas as utilidades potenciais da demografia a de maior repercussão prática provavelmente é a sua contribuição às \structure{projeções} em diferentes áreas que se baseia na previsibilidade maior da **dinâmica demográfica** em comparação com outros fenômenos sociais. 
-    + A aplicação mais direta são \structure{as projeções das populações nacionais}.
-
-- A demografia também oferece subsídios valiosos para os prognósticos em outras áreas. Por exemplo, geralmente existe um elemento demográfico nas projeções:
-    + da **matrícula escolar**;
-    + **do mercado de trabalho**;
-    + da demanda por **serviços médicos**;
-    + ou da evolução no longo prazo da demanda por diferentes produtos de consumo.
-
-# Dados demográficos: estoque/fluxo {.allowframebreaks}
-
-- Embora os estudiosos da população hoje em dia usem uma variedade de informações, o dado propriamente demográfico normalmente pode ser classificado como \structure{estatística de estoque} ou \structure{de fluxo}. 
-
-\begin{mybox}{estatística de estoque}
-características estáticas de uma população num determinado momento -- como se fosse uma fotografia: tamanho da população, a sua distribuição territorial, por sexo, por idade ou por características socioeconômicas.
-
-{\bf Fontes de dados:} censos ou inquéritos amostrais (``\emph{surveys}'').
+(além de ser o nome da ciência/área do conhecimento) é a denominação dada a uma quantidade, calculada com base nos elementos de uma amostra, que descreve a informação contida nesse conjunto de dados. 
 
 \end{mybox}
 
-\begin{mybox}{estatística de fluxo}
-trata da dinâmica populacional, ou seja, dos eventos que transformam essas características -- como se fosse um filme: nascimentos, óbitos, migração e mobilidade entre categorias socioeconômicas.
+- __EX.:__ A média, a porcentagem, o desvio padrão, o coeficiente de correlação, calculados em uma amostra, são estatísticas.
 
-{\bf Fontes de dados:} sistema de registro de eventos ou, mais raramente, um levantamento de passagens repetidas (``\emph{multi-round survey}'').
+- Podem aparecer na literatura como letras latinas (minúsculas) e símbolos:
+    + $\overline{x}, p, dp(x)$, etc.
+    
+\framebreak
 
+Se consideramos que $n$ indivíduos de uma amostra, com relação a uma variável quantitativa $X$, de tal forma que observamos $(x_1, x_2, \ldots, x_n)$, então podemos tomar como exemplo as seguintes estatísticas:
+
+\begin{eqnarray*}
+\overline{x} &=& \displaystyle{\frac{1}{n}\sum_{i=1}^n{x_i}} = \frac{x_1 + x_2 + \ldots + x_n}{n},\\
+x_{(1)} &=& \min\{x_1,\ldots,x_n\},\\
+x_{(n)} &=& \max\{x_1,\ldots,x_n\},\\
+dp(x) &=& \sqrt{\frac{\sum_{i=1}^n{(x_i - \overline{x})^2}}{n-1}}.
+\end{eqnarray*}
+
+## Parâmetros, estatísticas e estimativas {.allowframebreaks}
+
+Os parâmetros são difíceis de se obter, pois implicam o estudo de toda a população e costumam ser substituídos por valores calculados em amostras representativas da população-alvo.
+
++ Se tivesse sido examinada uma amostra de 10 estudantes do PPG em Epidemiologia da UFRGS, e 80% reportassem uma boa/muito boa percepção de saúde, esse valor constituiria uma estimativa do parâmetro "percentual de boa/muito boa percepção de saúde" na população de estudantes do PPG em Epidemiologia.
+
+\framebreak
+
+\begin{mybox}{Estimativa}
+
+É um valor numérico de uma estatística, usado para realizar inferências sobre o parâmetro.
 \end{mybox}
 
+- Da mesma forma, o valor numérico da média para a estatura desses 10 alunos, digamos 173 cm, é uma estimativa para a média de altura populacional.
+
+- É muito comum o uso do "chapéu" para denotar uma estimativa com respeito a um parãmetro:
+    + $\hat{\mu} = 173\ \mbox{cm}$ ou $\hat{\overline{X}} = 173\ \mbox{cm}$.
+    
 ## Para casa
 
-+ Ler o capítulo 1 do livro "Métodos Demográficos Uma Visão Desde os Países de Língua Portuguesa"\footnote{FOZ, Grupo de. \emph{Métodos Demográficos Uma Visão Desde os Países de Língua Portuguesa}. São Paulo: Blucher, 2021. \url{https://www.blucher.com.br/metodos-demograficos-uma-visao-desde-os-paises-de-lingua-portuguesa_9786555500837}}.
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='65%', paged.print=FALSE, purl=FALSE}
+knitr::include_graphics(here::here('imagens', 'Gato_caindo.jpg'))
+```
+
+- Ver a discussão sobre __representatividade da amostra__ na [apresentação](https://www.youtube.com/watch?v=TGGGDpb04Yc&t=592s) do __Prof. Chris Fonnesbeck__.
 
 ## Próxima aula
 
-- Uma breve história da demografia.
-
-```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='90%', out.height='75%', paged.print=FALSE}
-
-knitr::include_graphics(here::here('imagens', 'historia_demografia.jpeg'))
-
-```
-
-<!-- ## Por hoje é só! -->
-
-<!-- \begin{center} -->
-<!-- {\bf Bons estudos!} -->
-<!-- \end{center} -->
-
-<!-- ```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='50%', out.height='50%', paged.print=FALSE} -->
-
-<!-- knitr::include_graphics(here::here('imagens', 'Statistically-Insignificant-corda-bamba.jpg')) -->
-
-<!-- ``` -->
-
+- Delineamentos de pesquisa: estudos aleatorizados, não-aleatorizados e levantamentos
+- Principais planos de amostragem probabilística
+- Organização dos dados
+- Descrição dos dados por resumos numéricos
